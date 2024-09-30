@@ -36,6 +36,7 @@ for line in reversed(lines):
         taxcode_value = line.split('New taxcode request received: ')[1].split(',')[0]  # Tách giá trị
 
 #------Hide_intro---------------------
+
 WebDriverWait(driver, 5).until(
      EC.presence_of_all_elements_located((By.CSS_SELECTOR, "body > div:nth-child(4) > div > div.ant-modal-wrap > div > div.ant-modal-content > button > span > i > svg"))
 )
