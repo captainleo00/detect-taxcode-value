@@ -93,7 +93,27 @@ fill_captcha = WebDriverWait(driver, 10).until(
 fill_captcha = driver.find_element(By.XPATH, "/html/body/div/section/main/section/div/div/div/div/div[3]/div[2]/div[2]/div[1]/form/div[1]/div[2]/div/div[2]/div/div[2]/div/span/input")
 fill_captcha.send_keys(captcha)
 
-driver.switch_to.default_content()
+find_button = WebDriverWait(driver, 10).until(
+    EC.presence_of_element_located((By.CSS_SELECTOR, "#__next > section > main > section > div > div > div > div > div.ant-tabs-content.ant-tabs-content-no-animated.ant-tabs-top-content.ant-tabs-card-content > div.ant-tabs-tabpane.ant-tabs-tabpane-active.home-search > div.ant-row.styles__SearchFormWrapper-sc-cmt9o6-6.dCdxPv > div.ant-col.ant-col-8 > form > div.ant-row-flex.ant-row-flex-center.home-search-button > div > button"))
+)
 
+find_button = driver.find_element(By.CSS_SELECTOR, "#__next > section > main > section > div > div > div > div > div.ant-tabs-content.ant-tabs-content-no-animated.ant-tabs-top-content.ant-tabs-card-content > div.ant-tabs-tabpane.ant-tabs-tabpane-active.home-search > div.ant-row.styles__SearchFormWrapper-sc-cmt9o6-6.dCdxPv > div.ant-col.ant-col-8 > form > div.ant-row-flex.ant-row-flex-center.home-search-button > div > button")
+find_button.click()
+
+xpath = "/html/body/div/section/main/section/div/div/div/div/div[3]/div[2]/div[2]/div[2]/section/p"
+text1 = "đã đăng ký"
+
+def check_text_appearance(xpath, text1):
+     try:
+         
+        WebDriverWait(driver, 10).until(
+            EC.text_to_be_present_in_element((By.XPATH, xpath), text1)
+)
+        return True
+     except Exception as e:
+        return False
+
+result = check_text_appearance(xpath, text1) 
+         
 time.sleep(600)    
 driver.quit()

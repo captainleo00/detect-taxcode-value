@@ -3,6 +3,7 @@ import requests
 import json
 import logging
 import os
+from auto_detect_taxcode import result
 
 app = Flask(__name__)
 
@@ -45,7 +46,7 @@ def input_taxcode():
             return jsonify({"Error": "Nhập sai. Vui lòng kiểm tra lại MST"}), 400 # Return when it falses
         
         logger.info(f'New taxcode request received: {taxcode}') # Define message with taxcode value
-        return jsonify({"taxcode": taxcode, "Status": "Thành công"}), 200 # Return when it trues
+        return jsonify({"taxcode": taxcode, "status": "Thành công"}), 200 # Return when it trues
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5001)
+    app.run(debug=True, port=5004)
