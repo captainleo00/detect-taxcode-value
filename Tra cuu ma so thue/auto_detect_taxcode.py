@@ -36,6 +36,8 @@ with open(data_file_path, 'r') as file:
 for line in reversed(lines): 
     if 'New taxcode request received:' in line:
         taxcode_value = line.split('New taxcode request received: ')[1].split(',')[0]  # Tách giá trị
+        break
+     # return taxcode_value
 
 print (taxcode_value)
 
