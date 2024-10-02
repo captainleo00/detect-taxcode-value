@@ -37,6 +37,8 @@ for line in reversed(lines):
     if 'New taxcode request received:' in line:
         taxcode_value = line.split('New taxcode request received: ')[1].split(',')[0]  # Tách giá trị
 
+print (taxcode_value)
+
 #------Hide_intro---------------------
 
 WebDriverWait(driver, 5).until(
