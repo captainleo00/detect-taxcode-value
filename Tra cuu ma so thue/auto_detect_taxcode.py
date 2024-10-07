@@ -3,16 +3,12 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys 
-from selenium.webdriver.common.action_chains import ActionChains 
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from pynput.keyboard import Key,  Controller
 import os
-import time
-import requests
 import base64
 from solvers.svgcaptcha import solver
-from selenium.webdriver import ActionChains
+
 
 
 

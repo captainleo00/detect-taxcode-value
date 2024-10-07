@@ -1,6 +1,4 @@
 from flask import Flask, request, jsonify
-import requests
-import json
 import logging
 import os
 from auto_detect_taxcode import check_text_appearance
