@@ -13,7 +13,7 @@ import requests
 import base64
 from solvers.svgcaptcha import solver
 from selenium.webdriver import ActionChains
-
+from datetime import datetime
 
 
 
@@ -109,6 +109,15 @@ def check_text_appearance(xpath, text1):
 
      xpath = "/html/body/div/section/main/section/div/div/div/div/div[3]/div[2]/div[2]/div[2]/section/p"
      text1 = "đã đăng ký"
+
+     save_result = driver.find_element(By.XPATH, "/html/body/div/section/main/section/div/div/div/div/div[3]/div[2]/div[2]/div[2]/section/p")
+     save_result_log = (save_result.text)
+     # print (save_result_log)
+
+     log_file_path = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'taxcode_results.log')
+     with open(log_file_path, 'a') as log_file:
+        log_file.write(f"Thời gian tra cứu: {datetime.now()} | Mã số thuế: {taxcode_value} | Kết quả: {save_result_log}\n")
+
      try:
          
         WebDriverWait(driver, 10).until(
@@ -119,6 +128,8 @@ def check_text_appearance(xpath, text1):
         return "Chưa đăng ký hóa đơn điện tử"
      finally:
        driver.quit()
+
+     
 
   
 
