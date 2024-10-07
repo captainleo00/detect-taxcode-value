@@ -4,6 +4,7 @@ import json
 import logging
 import os
 from auto_detect_taxcode import check_text_appearance
+from datetime import datetime
 
 app = Flask(__name__)
 
@@ -49,8 +50,18 @@ def input_taxcode():
         
         xpath = "/html/body/div/section/main/section/div/div/div/div/div[3]/div[2]/div[2]/div[2]/section/p"
         text1 = "đã đăng ký"
-    
         result = check_text_appearance(xpath, text1)# Gọi hàm check_text_appearance từ file Selenium
+
+        # Tạo file taxcode_results.log
+        
+        log_file_path = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'taxcode_results.log')
+        
+        def log_result(taxcode, result):
+            with open(log_file_path, 'a', encoding='utf-8') as log_file:
+              log_file.write(f"Thời gian tra cứu: {datetime.now()} | Mã số thuế: {taxcode} | Kết quả: {result}\n")
+
+        log_result(taxcode, result)
+       
         return jsonify({"taxcode": taxcode, "status": "Thành công", "result": result}), 200 # Return when it trues
 
 if __name__ == '__main__':
