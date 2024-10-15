@@ -8,17 +8,27 @@ from selenium.webdriver.support import expected_conditions as EC
 import os
 import base64
 from solvers.svgcaptcha import solver
-
+from selenium.webdriver.chrome.options import Options
 
 
 
 
 def check_text_appearance(xpath, text1):
 
+# Chrome configurations:
+
+     chrome_options = Options()
+     chrome_options.add_argument("--headless")  # Chạy ở chế độ headless
+     chrome_options.add_argument("--no-sandbox")
+     chrome_options.add_argument("--disable-dev-shm-usage")
+     chrome_options.add_argument("--disable-gpu")  # Vô hiệu hóa GPU
+     chrome_options.add_argument("--remote-debugging-port=9222")  # Thêm port để gỡ lỗi từ xa
+     chrome_options.add_argument("--disable-software-rasterizer")  # Tắt phần mềm rasterizer
+          
      driver = None
      try:
       
-      driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+      driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
 
      #-------------Go to taxcode_web---------------------
 
