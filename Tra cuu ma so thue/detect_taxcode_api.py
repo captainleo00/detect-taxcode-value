@@ -42,7 +42,7 @@ def input_taxcode():
         taxcode = request.args.get('taxcode') # Get taxcode value
         
         if taxcode is None or not validate_taxcode(taxcode): #Verify lenght of taxcode value
-            return jsonify({"error": "Nhập sai. Vui lòng kiểm tra lại MST"}), 400 # Return when it falses
+            return jsonify({"status": f"Request không thành công", "error": "Nhập sai. Vui lòng kiểm tra lại MST"},"Vui lòng request lại"), 400 # Return when it falses
         
         logger.info(f'New taxcode request received: {taxcode}') # Define message with taxcode value
         
