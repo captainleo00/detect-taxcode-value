@@ -171,7 +171,7 @@ def check_text_appearance(xpath, text1):
         raise Exception("Chưa đăng ký hóa đơn điện tử")
     
      except Exception as e:
-      return str(e)
+      raise Exception(str(e))
     
      finally:
       if driver:
