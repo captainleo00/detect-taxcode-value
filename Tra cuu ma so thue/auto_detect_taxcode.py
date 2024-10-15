@@ -168,7 +168,7 @@ def check_text_appearance(xpath, text1):
         return "Đã đăng ký hóa đơn điện tử" 
      
       except Exception as e:
-        raise Exception("Chưa đăng ký hóa đơn điện tử")
+        return "Chưa đăng ký hóa đơn điện tử"
     
      except Exception as e:
       raise Exception(str(e))
