@@ -26,7 +26,7 @@ logger.addHandler(file_handler)
 # Validate taxcode value
 
 def validate_taxcode(taxcode):
-            if taxcode.isdigit() and len(taxcode) == 14 or len(taxcode) == 10: # Value must be xxxxxxxxxx-xxx (14) or xxxxxxxxxx (10)
+            if len(taxcode) in [10, 14]: # Value must be xxxxxxxxxx-xxx (14) or xxxxxxxxxx (10)
                return True
             return False  
 
@@ -48,8 +48,14 @@ def input_taxcode():
         
         xpath = "/html/body/div/section/main/section/div/div/div/div/div[3]/div[2]/div[2]/div[2]/section/p"
         text1 = "đã đăng ký"
-        result = check_text_appearance(xpath, text1)# Gọi hàm check_text_appearance từ file Selenium
+        
+        try:
 
+         result = check_text_appearance(xpath, text1)# Gọi hàm check_text_appearance từ file Selenium
+
+        except Exception as e:
+            return jsonify ({"error": f"Request không thành công. {str(e)}"}), 500 #Return 500 when can not request
+        
         # Tạo file taxcode_results.log
         
         log_file_path = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'taxcode_results.log')
