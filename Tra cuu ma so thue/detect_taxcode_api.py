@@ -42,7 +42,7 @@ def input_taxcode():
         taxcode = request.args.get('taxcode') # Get taxcode value
         
         if taxcode is None or not validate_taxcode(taxcode): #Verify lenght of taxcode value
-            return jsonify({"status": f"Request không thành công", "error": "Nhập sai. Vui lòng kiểm tra lại MST"},"Vui lòng request lại"), 400 # Return when it falses
+            return jsonify({"status": f"Request không thành công. Vui lòng request lại", "error": "Nhập sai. Vui lòng kiểm tra lại MST"}), 400 # Return when it falses
         
         logger.info(f'New taxcode request received: {taxcode}') # Define message with taxcode value
         
@@ -54,7 +54,7 @@ def input_taxcode():
          result = check_text_appearance(xpath, text1)# Gọi hàm check_text_appearance từ file Selenium
 
         except Exception as e:
-            return jsonify ({"status": f"Request không thành công", "error":{str(e)}}, "Vui lòng request lại"), 500 #Return 500 when can not request
+            return jsonify ({"status": f"Request không thành công. Vui lòng request lại", "error":{str(e)}}), 500 #Return 500 when can not request
         
         # Tạo file taxcode_results.log
         
