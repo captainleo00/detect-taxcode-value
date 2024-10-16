@@ -54,7 +54,7 @@ def input_taxcode():
          result = check_text_appearance(xpath, text1)# Gọi hàm check_text_appearance từ file Selenium
 
         except Exception as e:
-            return jsonify ({"status": f"Request không thành công. Vui lòng request lại", "error":{str(e)}}), 500 #Return 500 when can not request
+            return jsonify ({"status": f"Request không thành công. Vui lòng request lại", "error":str(e)}), 500 #Return 500 when can not request
         
         # Tạo file taxcode_results.log
         
