@@ -68,7 +68,7 @@ def check_text_appearance(xpath, text1):
 
       try:
          
-       WebDriverWait(driver, 5).until(
+       WebDriverWait(driver, 10).until(
           EC.presence_of_all_elements_located((By.CSS_SELECTOR, "body > div:nth-child(4) > div > div.ant-modal-wrap > div > div.ant-modal-content > button > span > i > svg"))
      )
 
@@ -82,7 +82,7 @@ def check_text_appearance(xpath, text1):
       
       try:
      
-       WebDriverWait(driver, 5).until(
+       WebDriverWait(driver, 10).until(
           EC.presence_of_all_elements_located((By.CSS_SELECTOR, "#__next > section > main > section > div > div > div > div > div.ant-tabs-bar.ant-tabs-top-bar.ant-tabs-card-bar > div > div > div > div > div:nth-child(1) > div:nth-child(2)"))
      )
 
@@ -96,7 +96,7 @@ def check_text_appearance(xpath, text1):
     
       try:
 
-       WebDriverWait(driver, 5).until(
+       WebDriverWait(driver, 10).until(
           EC.presence_of_all_elements_located((By.CSS_SELECTOR, "#mst"))
      )
 
@@ -114,7 +114,7 @@ def check_text_appearance(xpath, text1):
 
       try:
      
-       WebDriverWait(driver, 5).until(
+       WebDriverWait(driver, 10).until(
           EC.presence_of_all_elements_located((By.CSS_SELECTOR, "#__next > section > main > section > div > div > div > div > div.ant-tabs-content.ant-tabs-content-no-animated.ant-tabs-top-content.ant-tabs-card-content > div.ant-tabs-tabpane.ant-tabs-tabpane-active.home-search > div.ant-row.styles__SearchFormWrapper-sc-cmt9o6-6.dCdxPv > div.ant-col.ant-col-8 > form > div:nth-child(1) > div:nth-child(2) > div > div:nth-child(1) > div > div.ant-col.ant-form-item-control-wrapper > div > span > div > img"))
      )
 

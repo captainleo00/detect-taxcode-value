@@ -69,4 +69,6 @@ def input_taxcode():
         return jsonify({"taxcode": taxcode, "status": "Thành công", "result": result}), 200 # Return when it trues
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+     port = int(os.environ.get("PORT", 5000))
+     debug = bool(os.environ.get("DEBUG", True))
+     app.run(debug=debug, port=port)
